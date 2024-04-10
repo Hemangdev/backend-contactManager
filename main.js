@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //routes
 app.use('/api/v1', contactRoute) 
  
-mongoose.connect("mongodb://localhost:27017").then(() => {
+mongoose.connect("mongodb+srv://asthanahemang:1zMNnq3HjJRUvfar@mydatabase.2yj9mag.mongodb.net/").then(() => {
     console.log("DB connected successfully"); 
 }).catch((err) => {
     console.log(err);
