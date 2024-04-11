@@ -3,10 +3,13 @@ import mongoose from 'mongoose';
 import contactRoute from './Routes/contact.js'
 import bodyParser from 'body-parser'; 
 import cors from 'cors'; 
+import dotenv from 'dotenv' 
 
 
 const app = express()
-const PORT = 4000;
+dotenv.config()
+const PORT = process.env.PORT;
+
 app.use(express.json())
 app.use(cors({
     origin:"http://localhost:3000",
@@ -20,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //routes
 app.use('/api/v1', contactRoute) 
  
-mongoose.connect("mongodb+srv://asthanahemang:1zMNnq3HjJRUvfar@mydatabase.2yj9mag.mongodb.net/").then(() => {
+mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log("DB connected successfully"); 
 }).catch((err) => {
     console.log(err);
